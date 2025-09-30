@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Gestión de Salón (SPA estática)</title>
+  <meta name="description" content="SPA 100% estática para gestión de salones: citas, clientes, servicios, facturación, inventario, configuración." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Tipografías del sistema para rendimiento; sin cargas externas -->
+</head>
+<body>
+  <noscript>Esta aplicación requiere JavaScript habilitado.</noscript>
+
+  <!-- Barra superior -->
+  <header class="topbar" role="banner" aria-label="Barra superior">
+    <button id="menuToggle" class="icon-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <h1 class="app-title" aria-label="Gestión de Salón">Gestión de Salón</h1>
+    <div class="top-actions">
+      <input id="globalSearch" class="search" type="search" placeholder="Buscar ( / ) — clientes, citas, facturas…" aria-label="Búsqueda global" />
+      <button id="btnNewAppt" class="primary" title="Nueva cita (N)">Nueva cita</button>
+      <button id="btnNewClient" class="secondary" title="Nuevo cliente (C)">Nuevo cliente</button>
+      <button id="btnNewInvoice" class="secondary" title="Nueva factura (F)">Nueva factura</button>
+    </div>
+  </header>
+
+  <!-- Navegación lateral -->
+  <nav id="sidebar" class="sidebar" role="navigation" aria-label="Secciones">
+    <ul>
+      <li><a href="#/dashboard" data-route>Dashboard</a></li>
+      <li><a href="#/citas" data-route>Citas</a></li>
+      <li><a href="#/clientes" data-route>Clientes</a></li>
+      <li><a href="#/servicios" data-route>Servicios</a></li>
+      <li><a href="#/facturas" data-route>Facturación</a></li>
+      <li><a href="#/inventario" data-route>Inventario</a></li>
+      <li><a href="#/config" data-route>Configuración</a></li>
+      <li><a href="#/respaldo" data-route>Respaldo</a></li>
+    </ul>
+    <footer class="sidebar-footer">
+      <button id="btnResetDemo" class="link danger">Restablecer demo</button>
+      <small>Atajos: / N C F</small>
+    </footer>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main id="app" class="app" role="main" tabindex="-1" aria-live="polite">
+    <!-- El contenido se renderiza dinámicamente desde app.js -->
+    <section class="loading" data-view="loading">
+      <div class="spinner" role="status" aria-label="Cargando"></div>
+      <p>Cargando aplicación…</p>
+    </section>
+  </main>
+
+  <!-- Diálogo para impresión / exportación a PDF (usa print del navegador) -->
+  <section id="printArea" class="print-area" aria-hidden="true"></section>
+
+  <!-- Plantillas mínimas (renderizadas por JS) -->
+  <template id="tpl-empty">
+    <div class="empty">
+      <img src="assets/empty.svg" alt="" width="120" height="120" />
+      <p></p>
+      <button class="primary"></button>
+    </div>
+  </template>
+
+  <!-- Accesibilidad: región para mensajes (toasts) -->
+  <div id="toasts" class="toasts" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="app.js" type="module" defer></script>
+</body>
+</html>
