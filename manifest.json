@@ -1,0 +1,22 @@
+{
+  "name": "Gestión de Salón (SPA estática)",
+  "short_name": "Salón SPA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Citas, clientes, servicios, facturación, inventario y configuración. 100% estática, sin backend.",
+  "icons": [
+    {
+      "src": "assets/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
